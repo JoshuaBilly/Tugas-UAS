@@ -1,7 +1,7 @@
 # LAPORAN PENJELASAN TIAP NODE PADA WORKFLOW KNIME
 Bryan - C14250077 / Billy - C14250067
 -----------------------------------------------------
-1. CSV Reader
+# 1. CSV Reader
 
 Node ini digunakan untuk membaca seluruh data dari file ToyotaCorolla.csv.
 Data yang diperoleh mencakup harga mobil, usia mobil, kilometer pemakaian, jenis bahan bakar, tenaga mesin, jumlah pintu, dan berat mobil.
@@ -10,7 +10,7 @@ Tujuan tahap ini adalah menyediakan seluruh data untuk proses analisis selanjutn
 Insight:
 Pada tahap ini belum ada insight, karena data baru diimpor dan belum diolah.
 
-2. Column Filter
+# 2. Column Filter
 
 Node ini digunakan untuk memilih kolom yang penting dan membuang kolom yang tidak relevan.
 Kolom yang dipertahankan antara lain: Price, Age, KM, FuelType, HP, Automatic, Doors, dan Weight.
@@ -18,7 +18,7 @@ Kolom yang dipertahankan antara lain: Price, Age, KM, FuelType, HP, Automatic, D
 Insight:
 Dengan menyederhanakan kolom, analisis menjadi lebih terarah. Kolom-kolom yang dipilih memang merupakan faktor umum yang memengaruhi harga mobil di pasar.
 
-3. Row Filter
+# 3. Row Filter
 
 Node ini menyaring baris-baris yang tidak masuk akal, seperti harga = 0 atau kilometer = 0.
 Penyaringan dilakukan agar data yang digunakan valid dan tidak merusak hasil model.
@@ -26,7 +26,7 @@ Penyaringan dilakukan agar data yang digunakan valid dan tidak merusak hasil mod
 Insight:
 Setelah disaring, dataset menjadi lebih bersih, sehingga potensi error dalam analisis berkurang. Data ekstrem yang tidak realistis berhasil dihilangkan.
 
-4. GroupBy
+# 4. GroupBy
 
 Node ini menghitung rata-rata harga mobil berdasarkan jenis bahan bakar.
 Kolom FuelType digunakan sebagai pengelompokan, sementara Price dihitung nilai rata-ratanya.
@@ -43,14 +43,14 @@ CNG bisa lebih murah atau sedang, tergantung dataset
 
 Insight ini menunjukkan bahwa FuelType merupakan salah satu faktor penting dalam menentukan harga mobil.
 
-5. Column Renamer
+# 5. Column Renamer
 
 Node ini digunakan untuk mengganti nama kolom agar lebih mudah dipahami, misalnya “Mean(Price)” menjadi “AvgPrice”.
 
 Insight:
 Belum ada insight analitis, tetapi nama kolom lebih mudah dibaca dan menghindari kebingungan untuk proses berikutnya.
 
-6. Bar Chart
+# 6. Bar Chart
 
 Node ini menampilkan grafik harga rata-rata berdasarkan jenis bahan bakar.
 
@@ -58,7 +58,7 @@ Insight Utama:
 Grafik memperjelas perbedaan harga antara jenis bahan bakar.
 Dari visualisasi biasanya terlihat jelas bahwa perbedaan harga antar FuelType cukup signifikan, sehingga FuelType dapat dipertimbangkan dalam penentuan harga atau strategi penjualan.
 
-7. Rule Engine
+# 7. Rule Engine
 
 Node ini mengubah harga menjadi tiga kategori: Low, Medium, dan High.
 Kategorisasi dibuat berdasarkan batas harga tertentu yang ditentukan sebelumnya.
@@ -67,7 +67,7 @@ Insight:
 Dengan membuat kategori, analisis harga menjadi lebih mudah dipahami.
 Model prediksi juga bisa dibangun dengan lebih jelas karena targetnya berbentuk kelas, bukan angka mentah.
 
-8. Partitioning
+# 8. Partitioning
 
 Node ini membagi data menjadi data training (sekitar 80%) dan data testing (sekitar 20%).
 Pembagian ini diperlukan untuk menguji kemampuan model.
@@ -75,7 +75,7 @@ Pembagian ini diperlukan untuk menguji kemampuan model.
 Insight:
 Belum ada insight analitis, tetapi pembagian data memastikan bahwa model tidak “menghafal” data dan bisa diuji dengan adil.
 
-9. Decision Tree Learner
+# 9. Decision Tree Learner
 
 Node ini membangun model decision tree untuk mencari pola faktor-faktor yang memengaruhi kategori harga mobil.
 
@@ -90,14 +90,14 @@ FuelType juga sering berperan dalam menentukan kelas harga.
 
 Insight ini membuktikan bahwa faktor fisik dan performa mobil memang menjadi penentu yang nyata.
 
-10. Decision Tree Predictor
+# 10. Decision Tree Predictor
 
 Node ini menggunakan model yang telah dibuat untuk memprediksi kategori harga pada data testing.
 
 Insight:
 Pada tahap ini belum ada insight langsung karena outputnya adalah prediksi yang nanti dibandingkan dengan data asli.
 
-11. Scorer
+# 11. Scorer
 
 Node ini mengevaluasi performa prediksi menggunakan confusion matrix dan akurasi.
 
@@ -114,7 +114,7 @@ Kelas “High” biasanya terprediksi cukup stabil jika faktor HP dan Weight kua
 
 Insight ini menunjukkan bahwa model mampu mempelajari pola harga dengan lumayan baik, tetapi kategori menengah sering menjadi tantangan dalam klasifikasi.
 
-KESIMPULAN INSIGHT UTAMA
+# KESIMPULAN INSIGHT UTAMA
 
 Secara keseluruhan, workflow ini menghasilkan beberapa insight penting:
 
