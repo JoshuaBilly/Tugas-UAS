@@ -27,7 +27,9 @@ Insight:
 Setelah disaring, dataset menjadi lebih bersih, sehingga potensi error dalam analisis berkurang. Data ekstrem yang tidak realistis berhasil dihilangkan.
 
 # 4. GroupBy
-
+Membuat 3 Node GroupBy yang masing-masing terhubung ke Row Filter
+---
+Node GroupBy 1:
 Node ini menghitung rata-rata harga mobil berdasarkan jenis bahan bakar.
 Kolom FuelType digunakan sebagai pengelompokan, sementara Price dihitung nilai rata-ratanya.
 
@@ -43,22 +45,74 @@ CNG bisa lebih murah atau sedang, tergantung dataset
 
 Insight ini menunjukkan bahwa FuelType merupakan salah satu faktor penting dalam menentukan harga mobil.
 
+---
+Node GroupBy 2:
+Node ini menghitung rata-rata jarak tempuh (KM) berdasarkan umur dari kendaraan.
+Kolom Age_08_04 digunakan sebagai pengelompokan, sementara KM dihitung nilai rata-ratanya.
+
+Insight Utama:
+Dari perhitungan rata-rata, terlihat bahwa umur memang memengaruhi harga mobil.
+Biasanya ditemukan pola seperti:
+
+Semakin tua umur mobil, maka nilai rata-rata KM-nya cenderung besar.
+Namun, ada beberapa mobil yang umurnya lebih tua tapi nilai rata-rata KM-nya rendah.
+Hal ini bergantung pada dataset yang ada, bisa jadi karena mobil tidak laku, HP rendah, dan lain sebagainya.
+
+Insight ini menunjukkan bahwa Age_08_04 dapat menjadi faktor dalam menentukan lakunya mobil (di lihat dari KM-nya).
+
+---
+Node GroupBy 3:
+Node ini menghitung rata-rata harga mobil berdasarkan Horse Power yang dimiliki mesin mobil.
+Kolom HP digunakan sebagai pengelompokan, sementara Price dihitung nilai rata-ratanya.
+
+Insight Utama:
+Dari perhitungan rata-rata, terlihat bahwa HP memang memengaruhi harga mobil.
+Biasanya ditemukan pola seperti:
+Mobil dengan HP yang lebih tinggi cenderung lebih mahal.
+Namun, jika selisih HP hanya berbeda sedikit saja, kemungkinan besar mobil tersebut tidak laku karena tidak sepadan dengan harganya.
+Hal tersebut dapat di lihat pada dataset (HP: 71, 72, 73, 86). 
+Selisih HP nya sangat kecil, sehingga lebih sepadan membeli mobil yang HP-nya 72 dan 86 dibandingkan dari 71 ke 72 atau 72 ke 73.
+Secara umum, rata-rata harga mobil akan meningkat ketika HP-nya besar.
+
+Insight ini menunjukkan bahwa HP merupakan salah satu faktor penting dalam menentukan harga mobil.
+
 # 5. Column Renamer
 
-Node ini digunakan untuk mengganti nama kolom agar lebih mudah dipahami, misalnya “Mean(Price)” menjadi “AvgPrice”.
+Node ini digunakan untuk mengganti nama kolom agar lebih mudah dipahami, misalnya “Mean(Price)” menjadi “AvgPrice” dan "Mean(KM)" menjadi "AcgKM"
 
 Insight:
 Belum ada insight analitis, tetapi nama kolom lebih mudah dibaca dan menghindari kebingungan untuk proses berikutnya.
 
-# 6. Bar Chart
+# 6. Chart
 
+# Bar Chart
 Node ini menampilkan grafik harga rata-rata berdasarkan jenis bahan bakar.
 <img width="1205" height="907" alt="image" src="https://github.com/user-attachments/assets/6394efec-e2da-4c1d-8fc8-1c49066973aa" />
-
 
 Insight Utama:
 Grafik memperjelas perbedaan harga antara jenis bahan bakar.
 Dari visualisasi biasanya terlihat jelas bahwa perbedaan harga antar FuelType cukup signifikan, sehingga FuelType dapat dipertimbangkan dalam penentuan harga atau strategi penjualan.
+
+---
+# Line Plot 1
+Node ini menampilkan grafik rata-rata KM berdasarkan umur mobil.
+<img width="1251" height="901" alt="image" src="https://github.com/user-attachments/assets/9635a708-fc85-4f8a-9cb2-8a3e82514fec" />
+
+Insight Utama:
+Grafik memperjelas kenaikan rata-rata KM berdasarkan umur mobil.
+Dapat dilihat bahwa seiring bertambahnya umur mobil, rata-rata KM-nya semakin meningkat. Hal ini dapat menjadi penentu bahwa mobil yang tercatat rata-rata KM-nya tinggi merupakan mobil yang banyak dibeli atau laku di pasaran karena terbukti banyak digunakan di jalan.
+
+---
+# Line plot 2
+Node ini menampilkan kenaikan rata-rata harga berdasarkan Horse Power yang dimiliki mesin mobil.
+<img width="1255" height="907" alt="image" src="https://github.com/user-attachments/assets/385e24cf-1a6d-4ed8-bee3-b0750bd36da3" />
+
+Insight Utama:
+Grafik memperjelas kenaikan harga berdasarkan Horse Power yang dimiliki oleh mesin mobil.
+Dapat dilihat dalam visualisasinya bahwa semakin besar HP, maka semakin mahal mobil tersebut.
+Hal ini dapat menjadi salah satu faktor dalam mempertimbangkan harga mobil.
+
+
 
 # 7. Rule Engine
 
