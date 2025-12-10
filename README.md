@@ -53,6 +53,8 @@ Belum ada insight analitis, tetapi nama kolom lebih mudah dibaca dan menghindari
 # 6. Bar Chart
 
 Node ini menampilkan grafik harga rata-rata berdasarkan jenis bahan bakar.
+<img width="1205" height="907" alt="image" src="https://github.com/user-attachments/assets/6394efec-e2da-4c1d-8fc8-1c49066973aa" />
+
 
 Insight Utama:
 Grafik memperjelas perbedaan harga antara jenis bahan bakar.
